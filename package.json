@@ -1,0 +1,23 @@
+{
+  "name": "mmall",
+  "version": "1.0.0",
+  "description": "mmall前端",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hui-fly/mmall.git"
+  },
+  "author": "hui-fly",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hui-fly/mmall/issues"
+  },
+  "homepage": "https://github.com/hui-fly/mmall#readme",
+  "devDependencies": {
+    "webpack": "^4.8.3",
+    "webpack-cli": "^2.1.3"
+  }
+}
