@@ -1,9 +1,11 @@
 /*
-* @Author: huifly
-* @Date:   2018-05-15 23:17:11
-* @Last Modified by:   huifly
-* @Last Modified time: 2018-05-16 20:43:35
+* @Author: hui-fly
+* @Date:   2018-05-18 00:08:52
+* @Last Modified by:   hui-fly
+* @Last Modified time: 2018-05-18 12:32:33
 */
 body{
-	background:url(./banner1.jpg);
+	background:url(../../image/banner1.jpg);
+	background: #333;
+	color: red
 }

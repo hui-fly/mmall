@@ -2,5 +2,6 @@
 // $('body').html("HELLO,INDEX");
 // console.log('Hello,index')
 require('./index.css');
-require('../module.js');
-console.log('Hello,index')
+// require('../module.js');
+// console.log('Hello,index')
+console.log('index');
