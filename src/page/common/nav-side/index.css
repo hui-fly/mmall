@@ -1,0 +1,26 @@
+/*
+* @Author: hui-fly
+* @Date:   2018-05-24 12:20:25
+* @Last Modified by:   hui-fly
+* @Last Modified time: 2018-05-24 22:30:55
+*/
+/*导航主体*/
+.nav-side{
+	float: left;
+	width: 130px;
+	min-height: 100px;
+}
+.nav-side .nav-item{
+	line-height: 25px;
+	font-size: 13px;
+}
+.nav-side .nav-item .link{
+	color: #666;
+}
+.nav-side .nav-item.active .link{
+	color: #c60023;
+}
+.content.with-nav{
+	float: left;
+	widows: 950px;
+}

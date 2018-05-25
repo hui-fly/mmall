@@ -1,0 +1,36 @@
+/*
+* @Author: hui-fly
+* @Date:   2018-05-23 23:30:35
+* @Last Modified by:   hui-fly
+* @Last Modified time: 2018-05-24 14:15:38
+*/
+/*通用头部导航*/
+.header{
+	
+}
+.header .logo{
+	position: absolute;
+	display: block;
+	left: 60px;
+	top: 35px;
+	font-size: 36px;
+	color: #c60023;
+	font-weight: bold;
+}
+.header .search-con{
+	padding: 40px 0 50px 250px;
+}
+.header .search-con .search-input{
+	width: 550px;
+	height: 40px;
+	line-height: 40px;
+	padding-left: 10px;
+	font-size: 15px;
+	border:2px solid #c60023;
+	outline: none;
+}
+.header .search-con .search-btn{
+    position: absolute;
+    height: 44px;
+	line-height: 44px;
+}

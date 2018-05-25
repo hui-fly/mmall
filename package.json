@@ -5,10 +5,10 @@
   "main": "webpack.config.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dist_win":"set WEBPACK_ENV=online && webpack -p",
-    "dev_win" : "set WEBPACK_ENV=dev && webpack-dev-server --inline --port 8080"
+    "dist_win": "set WEBPACK_ENV=online && webpack -p",
+    "dev_win": "set WEBPACK_ENV=dev_win && webpack-dev-server --inline --port 8088",
+	"start": "webpack-dev-server --open"
   },
-
   "repository": {
     "type": "git",
     "url": "git+https://github.com/hui-fly/mmall.git"
@@ -29,5 +29,9 @@
     "url-loader": "^0.5.8",
     "webpack": "^1.15.0",
     "webpack-dev-server": "^1.16.5"
+  },
+  "dependencies": {
+    "font-awesome": "^4.7.0",
+    "hogan": "^1.0.2"
   }
 }

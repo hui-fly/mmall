@@ -1,0 +1,17 @@
+/*
+* @Author: hui-fly
+* @Date:   2018-05-20 01:55:03
+* @Last Modified by:   hui-fly
+* @Last Modified time: 2018-05-20 02:04:51
+*/
+.nav-simple{
+	height: 60px;
+	line-height: 60px;
+	border-bottom: 1px solid #ddd;
+	background: #fff;
+}
+.nav-simple .logo{
+	font-size: 26px;
+	font-weight: bold;
+	color: #c60023;
+}
