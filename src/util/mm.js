@@ -2,7 +2,7 @@
 * @Author: hui-fly
 * @Date:   2018-05-18 19:07:26
 * @Last Modified by:   hui-fly
-* @Last Modified time: 2018-05-24 10:39:15
+* @Last Modified time: 2018-06-06 23:42:33
 */
 
 // 'use strict';
@@ -63,10 +63,10 @@ var _mm = {
             return result;
     },
     //成功提示
-    successTipS : function(msg){
+    successTips : function(msg){
     	alert(msg || "操作成功")
     },
-    errorTipS : function(msg){
+    errorTips : function(msg){
     	alert(msg || "哪里不对了~~")
     },
     //字段的验证，支持非空、手机、邮箱
@@ -87,7 +87,7 @@ var _mm = {
     },
     //统一登陆处理
     doLogin : function(){
-    	window.location.href = './login.html?redirect=' + encodeURIComponent(window.location.href);
+    	window.location.href = './user-login.html?redirect=' + encodeURIComponent(window.location.href);
     },
 };
 

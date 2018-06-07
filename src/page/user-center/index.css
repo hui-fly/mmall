@@ -1,0 +1,17 @@
+/*
+* @Author: hui-fly
+* @Date:   2018-05-30 19:40:25
+* @Last Modified by:   hui-fly
+* @Last Modified time: 2018-05-30 20:59:58
+*/
+
+.form-line{
+    height: 30px;
+    line-height: 30px;
+    font-size: 14px;
+}
+.form-line .label{
+    display: inline-block;
+    width: 60px;
+    text-align: center;
+}

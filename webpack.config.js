@@ -1,78 +1,93 @@
 /*
-* @Author: huifly
-* @Date:   2018-05-14 22:06:01
+* @Author: hui-fly
+* @Date:   2018-05-18 16:28:46
 * @Last Modified by:   hui-fly
-* @Last Modified time: 2018-05-25 23:23:36
+* @Last Modified time: 2018-06-06 23:02:31
 */
 
-var webpack = require('webpack');
-var Ex      = require('extract-text-webpack-plugin');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
+var webpack             = require('webpack');
+var ExtractTextPlugin   = require('extract-text-webpack-plugin');
+var HtmlWebpackPlugin   = require('html-webpack-plugin');
+
 // 环境变量配置，dev / online
-var WEBPACK_ENV       = process.env.WEBPACK_ENV || 'dev';
-console.log(WEBPACK_ENV);
-// 获取htnl-webpack-plugin参数的方法
-var getHtmlConfig = function(name,title){
-  return {
-    template : './src/view/' + name + '.html',
-    title    : title,
-    filename : 'view/' + name + '.html',      //目标文件的位置dist/view/....
-    inject   : true,
-    hash     : true,
-    chunks   : ['common',name],      //需要打包的模块,即引用的文件为entry的common和name
-  };
+var WEBPACK_ENV         = process.env.WEBPACK_ENV || 'dev';
+
+// 获取html-webpack-plugin参数的方法 
+var getHtmlConfig = function(name, title){
+    return {
+        template    : './src/view/' + name + '.html',
+        filename    : 'view/' + name + '.html',
+        title       : title,
+        inject      : true,
+        hash        : true,
+        chunks      : ['common', name]
+    };
 };
-var config  = {
-  entry: {
-  	'common' :["./src/page/common/index.js"],//common是所有页面都要引用的，其实他只是引用了一个用于初始化的css
-  	'index'  :["./src/page/index/index.js"], //由view下的index.html引用
-  	'login'  :["./src/page/login/index.js"],//由view下的login.html引用
-    'result' :["./src/page/result/index.js"],//由view下的result.html引用
-  },//已多次提及的唯一入口文件
-  output: {
-    path: "./dist",//打包后的文件存放的地方
-    publicPath:'/dist',
-    filename: 'js/[name].js'//打包后输出文件的文件名
-  },
-  externals : {
-    'jquery' : 'window.jQuery'
-  },
-  module: {
-  	//以CSS文件为结尾的文件就是用'style-loader', 'css-loader'
-  	  loaders: [
-      // { test: /\.css$/, loader:'style-loader!css-loader' },
-      { test: /\.css$/, loader: Ex.extract('style-loader','css-loader') }, // 单独打包出CSS，这里配置注意下
-  		{ test: /\.(gif|png|jpg|woff|svg|eot|ttf)\??.*$/, loader: 'url-loader?limit=100&name=resource/[name].[ext]' },
-      { test: /\.string$/, loader: 'html-loader'}
-	  ]
-  },
-  //为没一个路径配置一个别名
-  resolve:{
-    alias : {
-      util           : __dirname + '/src/util',//__dirname表示当前的根目录
-      page           : __dirname + '/src/page',
-      service        : __dirname + '/src/service',
-      image          : __dirname + '/src/image',
-      node_modules   : __dirname + '/node_modules',
-    }
-  },
-  plugins :[
-    //独立通用模块
-  	new webpack.optimize.CommonsChunkPlugin({
-  		name :'common',
-  		filename :'js/base.js'   //根目录就是output中的path
-  	}),    
-    //把CSS单独打包到文件里
-  	new Ex("css/[name].css"),     //name就是入口里的变量
-    // html模板的处理
-    new HtmlWebpackPlugin(getHtmlConfig('index','首页')),
-    new HtmlWebpackPlugin(getHtmlConfig('login','登录')),
-    new HtmlWebpackPlugin(getHtmlConfig('result','操作结果')),
-    new HtmlWebpackPlugin(getHtmlConfig('user-center','用户中心')),
-  ]
+// webpack config
+var config = {
+    entry: {
+        'common'            : ['./src/page/common/index.js'],
+        'index'             : ['./src/page/index/index.js'],
+        // 'list'              : ['./src/page/list/index.js'],
+        // 'detail'            : ['./src/page/detail/index.js'],
+        // 'cart'              : ['./src/page/cart/index.js'],
+        'user-login'        : ['./src/page/user-login/index.js'],
+        'user-register'     : ['./src/page/user-register/index.js'],
+        'user-pass-reset'   : ['./src/page/user-pass-reset/index.js'],
+        'user-center'       : ['./src/page/user-center/index.js'],
+        'user-center-update': ['./src/page/user-center-update/index.js'],
+        'user-pass-update'  : ['./src/page/user-pass-update/index.js'],
+        'result'            : ['./src/page/result/index.js'],
+    },
+    output: {
+        path: './dist',
+        publicPath : '/dist',
+        filename: 'js/[name].js'
+    },
+    externals : {
+        'jquery' : 'window.jQuery'
+    },
+    module: {
+        loaders: [
+            { test: /\.css$/, loader: ExtractTextPlugin.extract("style-loader","css-loader") },
+            { test: /\.(gif|png|jpg|woff|svg|eot|ttf)\??.*$/, loader: 'url-loader?limit=100&name=resource/[name].[ext]' },
+            { test: /\.string$/, loader: 'html-loader'}
+        ]
+    },
+    resolve : {
+        alias : {
+            node_modules    : __dirname + '/node_modules',
+            util            : __dirname + '/src/util',
+            page            : __dirname + '/src/page',
+            service         : __dirname + '/src/service',
+            image           : __dirname + '/src/image'
+        }
+    },
+    plugins: [
+        // 独立通用模块到js/base.js
+        new webpack.optimize.CommonsChunkPlugin({
+            name : 'common',
+            filename : 'js/base.js'
+        }),
+        // 把css单独打包到文件里
+        new ExtractTextPlugin("css/[name].css"),
+        // html模板的处理
+        new HtmlWebpackPlugin(getHtmlConfig('index', '首页')),
+        // new HtmlWebpackPlugin(getHtmlConfig('list', '商品列表页')),
+        // new HtmlWebpackPlugin(getHtmlConfig('detail', '商品详情页')),
+        // new HtmlWebpackPlugin(getHtmlConfig('cart', '购物车')),
+        new HtmlWebpackPlugin(getHtmlConfig('user-login', '用户登录')),
+        new HtmlWebpackPlugin(getHtmlConfig('user-register', '用户注册')),
+        new HtmlWebpackPlugin(getHtmlConfig('user-pass-reset', '找回密码')),
+        new HtmlWebpackPlugin(getHtmlConfig('user-center', '个人中心')),
+        new HtmlWebpackPlugin(getHtmlConfig('user-center-update', '修改个人信息')),
+        new HtmlWebpackPlugin(getHtmlConfig('user-pass-update', '修改密码')),
+        new HtmlWebpackPlugin(getHtmlConfig('result', '操作结果')),
+    ]
 };
 
 if('dev' === WEBPACK_ENV){
-    config.entry.common.push('webpack-dev-server/client?http://localhost:8088/');
+    config.entry.common.push('webpack-dev-server/client?http://localhost:8080/');
 }
+
 module.exports = config;

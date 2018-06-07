@@ -1,26 +1,27 @@
 /*
 * @Author: hui-fly
-* @Date:   2018-05-25 13:26:03
+* @Date:   2018-05-30 00:30:49
 * @Last Modified by:   hui-fly
-* @Last Modified time: 2018-05-25 23:47:49
+* @Last Modified time: 2018-05-30 20:59:20
 */
+
 .page-wrap{
-	background: #fff;
-	padding: 30px 0;
-	text-align: center;
-	margin-top: 20px;
+    padding: 30px 0;
+    margin-top: 20px;
+    text-align: center;
+    background: #fff;
 }
 .result-con{
-	display: none;
+    display: none;
 }
 .result-con .result-title{
-	color: #555;
+    color: #555;
 }
 .result-con .result-content{
-	margin-top: 20px;
+    margin-top: 20px;
 }
 .result-con .result-content .link{
-	margin: 0 5px;
-	padding: 5px 10px;
-	border :1px solid #ccc;
+    margin: 0 5px;
+    padding: 5px 10px;
+    border: 1px solid #ccc;
 }
